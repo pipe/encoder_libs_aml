@@ -152,6 +152,10 @@ int vl_video_encoder_encode(vl_codec_handle_t codec_handle, vl_frame_type_t fram
         videoInput.YCbCr[0] = (unsigned long)&in[0];
         videoInput.YCbCr[1] = (unsigned long)(videoInput.YCbCr[0] + videoInput.height * videoInput.pitch);
 
+	// hack as advised here : 
+	// https://forum.khadas.com/t/vim3-h-264-h-265-video-encoding/7212/18
+	format = 3;
+
         if (format == 0) { //NV12
             videoInput.fmt = AMVENC_NV12;
             videoInput.YCbCr[2] = 0;
